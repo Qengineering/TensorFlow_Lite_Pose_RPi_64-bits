@@ -20,11 +20,10 @@ Remove master.zip and README.md as they are no longer needed. <br/>
 $ rm master.zip <br/>
 $ rm README.md <br/> <br/>
 Your *MyDir* folder must now look like this: <br/> 
-James.mp4 <br/>
-COCO_labels.txt <br/>
-detect.tflite <br/>
-TestTensorFlow_Lite.cpb <br/>
-MobileNetV1.cpp<br/>
+Dance.mp4 <br/>
+posenet_mobilenet_v1_100_257x257_multi_kpt_stripped.tflite <br/>
+TestTensorFlow_Lite_Pose.cpb <br/>
+Pose_single.cpp<br/>
  <br/>
 Run TestTensorFlow_Lite.cpb with Code::Blocks. Remember, you also need a working OpenCV 4 on your Raspberry. <br/>
 I fact you can run this example on any aarch64 Linux system. <br/>
