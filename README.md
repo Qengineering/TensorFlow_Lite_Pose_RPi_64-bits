@@ -56,4 +56,50 @@ See the movie at: https://www.youtube.com/watch?v=LxSR5JJRBoI
 [![paypal](https://qengineering.eu/images/TipJarSmall4.png)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=CPZTM5BB3FCYL) 
 
 
+------------
+------------
 
+## Cli Version
+
+No code blocks. Only run it with cli.
+
+-----------
+
+### Cmake
+
+1. **Install opencv**
+
+```bash
+sudo apt install libopencv-dev
+```
+
+And we can check the version:
+```bash
+pkg-config --modversion opencv4
+```
+
+We can see the cmake config:
+```bash
+cat /usr/lib/aarch64-linux-gnu/cmake/opencv4/OpenCVConfig.cmake
+```
+
+------------
+
+2. **cmake**
+
+I built TensorFlow Lite 2.6.0 and now it is at `~/tensorflow`.
+
+Now we can build it:
+
+```bash
+mkdir build
+cd build/
+cmake -DOpenCV_DIR=/usr/lib/aarch64-linux-gnu/cmake/opencv4 ..
+make -j4
+```
+
+After the build:
+```bash
+mv posenet_cli ../
+rm -r build
+```
