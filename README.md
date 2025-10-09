@@ -67,7 +67,7 @@ No code blocks. Only run it with cli.
 
 ### Cmake
 
-1. **Install opencv**
+#### 1. **Install opencv**
 
 ```bash
 sudo apt install libopencv-dev
@@ -85,13 +85,19 @@ cat /usr/lib/aarch64-linux-gnu/cmake/opencv4/OpenCVConfig.cmake
 
 ------------
 
-2. **cmake**
+#### 2. **TensorFlow Lite**
+    
+I recommand you operating the installation on Debian Bookworm with GNU 12. For my case, I failed at installing TFLite 2.6.0 on Debian Trixie with GNU 14 or 12.
 
-I built TensorFlow Lite 2.6.0 and now it is at `~/tensorflow`.
+------------
 
-Now we can build it:
+#### 3. **cmake**
+
+Assuming the repo is at `~/`.
+We can build it:
 
 ```bash
+cd ~/TensorFlow_Lite_Pose_RPi_64-bits
 mkdir build
 cd build/
 cmake -DOpenCV_DIR=/usr/lib/aarch64-linux-gnu/cmake/opencv4 ..
@@ -101,5 +107,6 @@ make -j4
 After the build:
 ```bash
 mv posenet_cli ../
+cd ..
 rm -r build
 ```
