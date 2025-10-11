@@ -182,6 +182,31 @@ int main(int argc,char ** argv)
     cout << "channels : "<< model_channels << endl;
 
     VideoCapture cap("Dance.mp4");
+
+    // An USB Camera
+    // VideoCapture cap("/dev/video1");
+
+    // A CSI Camera
+    /*  $ rpicam-vid --list-cameras
+
+        0 : imx219 [3280x2464 10-bit RGGB] (/base/soc/i2c0mux/i2c@1/imx219@10)
+            Modes: 'SRGGB10_CSI2P' : 640x480 [103.33 fps - (1000, 752)/1280x960 crop]
+                                    1640x1232 [41.85 fps - (0, 0)/3280x2464 crop]
+                                    1920x1080 [47.57 fps - (680, 692)/1920x1080 crop]
+                                    3280x2464 [21.19 fps - (0, 0)/3280x2464 crop]
+                'SRGGB8' : 640x480 [103.33 fps - (1000, 752)/1280x960 crop]
+                            1640x1232 [41.85 fps - (0, 0)/3280x2464 crop]
+                            1920x1080 [47.57 fps - (680, 692)/1920x1080 crop]
+                            3280x2464 [21.19 fps - (0, 0)/3280x2464 crop]
+    */
+    // Assuming using the resolution 1640x1232 with framerate 15fps
+    // const std::string gst =
+    //     "libcamerasrc camera-name=/base/soc/i2c0mux/i2c@1/imx219@10 ! "
+    //     "video/x-raw,width=1640,height=1232,framerate=15/1,format=NV12 ! "
+    //     "videoconvert ! video/x-raw,format=BGR ! "
+    //     "appsink drop=true max-buffers=1 sync=false";
+    // VideoCapture cap( gst, cv::CAP_GSTREAMER );
+
     if (!cap.isOpened()) {
         cerr << "ERROR: Unable to open the camera" << endl;
         return 0;
@@ -209,7 +234,7 @@ int main(int argc,char ** argv)
         putText(frame, format("FPS %0.2f",f/16),Point(10,20),FONT_HERSHEY_SIMPLEX,0.6, Scalar(0, 0, 255));
 
         //show output
-        imshow("RPi 4 - 1.95 GHz - 2 Mb RAM", frame);
+        imshow("RPi 4", frame);
 
         char esc = waitKey(5);
         if(esc == 27) break;
