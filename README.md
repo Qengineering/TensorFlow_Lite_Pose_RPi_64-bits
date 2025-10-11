@@ -47,16 +47,10 @@ Pose_single.cpp<br/>
 
 ## Running the app.
 Run TestTensorFlow_Lite.cpb with Code::Blocks. More info or<br/> 
-if you want to connect a camera to the app, follow the instructions at [Hands-On](https://qengineering.eu/deep-learning-examples-on-raspberry-32-64-os.html#HandsOn).<br/>
-I fact you can run this example on any aarch64 Linux system. <br/><br/>
+If you want to connect a camera to the app, follow the instructions at [Hands-On](https://qengineering.eu/deep-learning-examples-on-raspberry-32-64-os.html#HandsOn).<br/>
+I fact, you can run this example on any aarch64 Linux system. <br/><br/>
 See the movie at: https://www.youtube.com/watch?v=LxSR5JJRBoI
 
-------------
-
-[![paypal](https://qengineering.eu/images/TipJarSmall4.png)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=CPZTM5BB3FCYL) 
-
-
-------------
 ------------
 
 ## CLI Version
@@ -86,7 +80,7 @@ cat /usr/lib/aarch64-linux-gnu/cmake/opencv4/OpenCVConfig.cmake
 
 ### 2. **TensorFlow Lite**
     
-I recommend you operating the installation on Debian Bookworm with GCC 12. In my case, building TensorFlow Lite 2.6.0 failed on Debian Trixie with both GCC 14 and GCC 12.
+I recommend operating the installation on Debian Bookworm with GCC 12. In my case, building TensorFlow Lite 2.6.0 failed on Debian Trixie with both GCC 14 and GCC 12.
 
 ------------
 
@@ -114,7 +108,10 @@ rm -r build
 
 ## Camera Issues
 
-If you want to change the camera source (or the video source), go to change `VideoCapture cap("Dance.mp4");` in `Pose_single.cpp`. For example, if you're using an USB camara with the location `/dev/video1`, change it to `VideoCapture cap("/dev/video1");`. And let's see some trick about checking cameras' information.
+If you want to change the camera source (or the video source), change `VideoCapture cap("Dance.mp4");` in `Pose_single.cpp` at line 184.<br><br>
+For example, if you have one camera connected, the node is `/dev/video0`. Use VideoCapture cap("/dev/video0");<br>
+If you have two cameras, for instance, a CSI RaspiCam and a USB webcam, and you want to use the USB camera, it lives at location `/dev/video1`, change it to `VideoCapture cap("/dev/video1");`<br><br>
+Some tricks for checking the cameras' information.
 
 ### Check Camera Input Source
 
@@ -123,11 +120,11 @@ Install the package:
 sudo apt install v4l-utils
 ```
 
-List all video related devices:
+List all video-related devices:
 ```bash
 v4l2-ctl --list-devices
 ```
-You can check if the name of a device contained "camera", and it's probably your destination device. To check:
+You can check if the name of a device contains "camera", and it's probably your destination device. To check:
 
 ```bash
 ffplay /dev/video1
@@ -178,3 +175,10 @@ const std::string gst =
 
 VideoCapture cap( gst, cv::CAP_GSTREAMER );
 ```
+
+------------
+
+[![paypal](https://qengineering.eu/images/TipJarSmall4.png)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=CPZTM5BB3FCYL) 
+
+
+------------
