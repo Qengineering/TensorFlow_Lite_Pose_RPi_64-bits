@@ -183,8 +183,8 @@ int main(int argc,char ** argv)
 
     VideoCapture cap("Dance.mp4");
 
-    // An USB Camera
-    // VideoCapture cap("/dev/video1");
+    // A USB Camera (depending on the number of connected cameras)
+    // VideoCapture cap("/dev/video0") or cap("/dev/video1");
 
     // A CSI Camera
     /*  $ rpicam-vid --list-cameras
@@ -250,3 +250,4 @@ int main(int argc,char ** argv)
 
     return 0;
 }
+
